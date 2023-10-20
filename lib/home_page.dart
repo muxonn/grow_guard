@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grow_guard/utils/device_block.dart';
 import 'utils/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,7 +27,39 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Column(
-        children: [],
+        children: [
+          const Text(
+            "Device",
+            style: TextStyle(
+              color: darkBlack,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.all(4),
+            child: Wrap(
+              direction: Axis.horizontal,
+              spacing: 10,
+              runSpacing: 20,
+              children: [
+                DeviceBlock(
+                    deviceIcon: Icons.device_thermostat_outlined,
+                    deviceText: "Temperature"),
+                DeviceBlock(
+                    deviceIcon: Icons.device_thermostat_outlined,
+                    deviceText: "Temperature"),
+                DeviceBlock(
+                    deviceIcon: Icons.device_thermostat_outlined,
+                    deviceText: "Temperature"),
+                DeviceBlock(
+                    deviceIcon: Icons.device_thermostat_outlined,
+                    deviceText: "Temperature"),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
