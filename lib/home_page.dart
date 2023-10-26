@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grow_guard/utils/device_block.dart';
+import 'package:grow_guard/utils/plant_block.dart';
 import 'utils/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,6 +54,9 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            Row(
+              children: [],
             ),
           ],
         ),
