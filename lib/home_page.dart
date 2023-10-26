@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(140),
+        preferredSize: const Size.fromHeight(120),
         child: Padding(
           padding: const EdgeInsets.only(left: 5, right: 20),
           child: AppBar(
@@ -55,8 +55,13 @@ class _HomePageState extends State<HomePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: 50),
             Row(
-              children: [],
+              children: [
+                PlantBlock(
+                    blockTitle: "Pleurotus eryngii ",
+                    blockImage: "pleurotus-eryngii.png"),
+              ],
             ),
           ],
         ),
