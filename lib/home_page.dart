@@ -15,51 +15,48 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(240),
-        child: AppBar(
-          toolbarHeight: 140,
-          centerTitle: true,
-          title: Image.asset(
-            'assets/images/logo.png',
-            width: 300,
+        preferredSize: const Size.fromHeight(140),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 5, right: 20),
+          child: AppBar(
+            toolbarHeight: 140,
+            centerTitle: true,
+            title: Image.asset(
+              'assets/images/logo-simple.png',
+              width: 70,
+            ),
+            leading: Icon(
+              Icons.menu_rounded,
+              color: Colors.black,
+              size: 40,
+            ),
+            actions: [
+              Icon(
+                Icons.bar_chart,
+                color: Colors.black,
+                size: 40,
+              )
+            ],
+            backgroundColor: Colors.white,
+            elevation: 0,
           ),
-          backgroundColor: forestGreen,
         ),
       ),
-      body: Column(
-        children: [
-          const Text(
-            "Device",
-            style: TextStyle(
-              color: darkBlack,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
+      body: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "My shrooms",
+              style: TextStyle(
+                color: darkBlack,
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-          Padding(
-            padding: EdgeInsets.all(4),
-            child: Wrap(
-              direction: Axis.horizontal,
-              spacing: 10,
-              runSpacing: 20,
-              children: [
-                DeviceBlock(
-                    deviceIcon: Icons.device_thermostat_outlined,
-                    deviceText: "Temperature"),
-                DeviceBlock(
-                    deviceIcon: Icons.device_thermostat_outlined,
-                    deviceText: "Temperature"),
-                DeviceBlock(
-                    deviceIcon: Icons.device_thermostat_outlined,
-                    deviceText: "Temperature"),
-                DeviceBlock(
-                    deviceIcon: Icons.device_thermostat_outlined,
-                    deviceText: "Temperature"),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
