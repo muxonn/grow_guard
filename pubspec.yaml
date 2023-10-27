@@ -59,6 +59,7 @@ flutter:
     - assets/images/logo.png
     - assets/images/logo-simple.png
     - assets/images/pleurotus-eryngii.png
+    - assets/images/news-infection.png
 
   fonts:
     - family: Arial Rounded

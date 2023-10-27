@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:grow_guard/utils/colors.dart';
 
 class PlantBlock extends StatelessWidget {
-  final String blockTitle;
-  final String blockImage;
+  final String title;
+  final String image;
 
-  const PlantBlock(
-      {super.key, required this.blockTitle, required this.blockImage});
+  const PlantBlock({super.key, required this.title, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +13,7 @@ class PlantBlock extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(24)),
             color: forestGreen,
           ),
@@ -25,7 +24,7 @@ class PlantBlock extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(left: 10, bottom: 20),
               child: Text(
-                blockTitle,
+                title,
                 style: TextStyle(
                   fontSize: 22,
                   color: Colors.white,
@@ -38,7 +37,7 @@ class PlantBlock extends StatelessWidget {
           top: -20,
           left: 10,
           child: Image.asset(
-            "assets/images/" + blockImage,
+            "assets/images/" + image,
             width: 120,
           ),
         ),
