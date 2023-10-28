@@ -23,13 +23,13 @@ class PlantPage extends StatelessWidget {
         elevation: 0,
       ),
       body: Container(
+        width: 400,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/pleurotus-eryngii.png"),
-            fit: BoxFit.contain,
           ),
         ),
-        margin: EdgeInsets.only(right: 1),
+        transform: Matrix4.translationValues(-200, -40, 0),
       ),
     );
   }
