@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                 size: 40,
               )
             ],
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.transparent,
             elevation: 0,
           ),
         ),
