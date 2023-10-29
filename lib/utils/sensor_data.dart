@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class SensorData extends StatelessWidget {
-  const SensorData({super.key});
+  final String type;
+  final IconData icon;
+  final bool controlled;
+  const SensorData(
+      {super.key,
+      required this.type,
+      required this.icon,
+      required this.controlled});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +34,10 @@ class SensorData extends StatelessWidget {
                     Column(
                       children: [
                         Icon(
-                          Icons.thermostat,
+                          icon,
                           size: 38,
                         ),
-                        Text('Temperature', style: TextStyle(fontSize: 10)),
+                        Text(type, style: TextStyle(fontSize: 10)),
                       ],
                     ),
                     SizedBox(width: 20),

@@ -39,8 +39,13 @@ class PlantPage extends StatelessWidget {
             transform: Matrix4.translationValues(-200, -40, 0),
           ),
           Column(
-            children: [
-              Center(child: SensorData()),
+            children: const [
+              Center(
+                child: SensorData(
+                    type: "Temperature",
+                    icon: Icons.thermostat,
+                    controlled: false),
+              ),
             ],
           ),
         ],
