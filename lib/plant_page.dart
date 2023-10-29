@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grow_guard/utils/colors.dart';
+import 'package:grow_guard/utils/sensor_data.dart';
 
 class PlantPage extends StatelessWidget {
   const PlantPage({super.key});
@@ -10,6 +11,10 @@ class PlantPage extends StatelessWidget {
       backgroundColor: forestGreen,
       appBar: AppBar(
         toolbarHeight: 130,
+        title: Text(
+          "Dashboard",
+          style: TextStyle(fontSize: 20),
+        ),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -22,14 +27,23 @@ class PlantPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Container(
-        width: 400,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/pleurotus-eryngii.png"),
+      body: Stack(
+        children: [
+          Container(
+            width: 400,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/pleurotus-eryngii.png"),
+              ),
+            ),
+            transform: Matrix4.translationValues(-200, -40, 0),
           ),
-        ),
-        transform: Matrix4.translationValues(-200, -40, 0),
+          Column(
+            children: [
+              Center(child: SensorData()),
+            ],
+          ),
+        ],
       ),
     );
   }
