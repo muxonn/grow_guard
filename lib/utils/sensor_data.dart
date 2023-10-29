@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'optimal_parameters.dart';
 
 class SensorData extends StatelessWidget {
   final String type;
@@ -13,6 +14,19 @@ class SensorData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    // Hardcoded value (test purpose)
+    final value = 27;
+    final parameter;
+    if (type == "Temperature") {
+      parameter = tempParam;
+    } else if (type == "Light") {
+      parameter = lightParam;
+    } else if (type == "Humidity") {
+      parameter = humidityParam;
+    } else {
+      parameter = {};
+    }
+
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -41,7 +55,7 @@ class SensorData extends StatelessWidget {
                       ],
                     ),
                     SizedBox(width: 20),
-                    Text("21C", style: TextStyle(fontSize: 30)),
+                    Text(value.toString(), style: TextStyle(fontSize: 30)),
                   ],
                 ),
               ),
@@ -60,7 +74,9 @@ class SensorData extends StatelessWidget {
             width: size.width / 12,
             height: size.height / 12,
             child: Icon(
-              Icons.done_outlined,
+              value > parameter["min"] && value < parameter["max"]
+                  ? Icons.done_outlined
+                  : Icons.warning_rounded,
               color: Colors.black,
               size: 28,
             ),
