@@ -7,6 +7,7 @@ class PlantPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: forestGreen,
       appBar: AppBar(
@@ -47,6 +48,43 @@ class PlantPage extends StatelessWidget {
                     controlled: false),
               ),
             ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                    color: Colors.white,
+                  ),
+                  width: size.width,
+                  height: size.height / 4,
+                ),
+                Positioned.fill(
+                  top: -40,
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      width: 120,
+                      height: 120,
+                      child: Icon(
+                        Icons.camera_alt_outlined,
+                        size: 80,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
