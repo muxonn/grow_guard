@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grow_guard/ui/bottom_navigation_element.dart';
 import 'package:grow_guard/utils/colors.dart';
 import 'package:grow_guard/utils/sensor_data.dart';
 
@@ -83,6 +84,16 @@ class PlantPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Row(
+                      children: [
+                        BottomNavigationElement(size: size),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ),
