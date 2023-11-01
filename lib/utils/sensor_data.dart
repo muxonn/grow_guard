@@ -31,7 +31,7 @@ class SensorData extends StatelessWidget {
       parameter = humidityParam;
       unit = "%";
     } else {
-      parameter = {};
+      parameter = {"min": 0, "max": 0};
       unit = "";
     }
 
