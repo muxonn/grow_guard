@@ -41,15 +41,32 @@ class PlantPage extends StatelessWidget {
             ),
             transform: Matrix4.translationValues(-200, -40, 0),
           ),
-          Column(
-            children: const [
-              Center(
-                child: SensorData(
-                    type: "Temperature",
-                    icon: Icons.thermostat,
-                    controlled: false),
-              ),
-            ],
+          Align(
+            alignment: Alignment.topCenter,
+            child: Column(
+              children: const [
+                SensorData(
+                  type: "Temperature",
+                  icon: Icons.thermostat,
+                  controlled: false,
+                  value: 27,
+                ),
+                SizedBox(height: 10),
+                SensorData(
+                  type: "Light",
+                  icon: Icons.light_mode_rounded,
+                  controlled: false,
+                  value: 110,
+                ),
+                SizedBox(height: 10),
+                SensorData(
+                  type: "Humidity",
+                  icon: Icons.water_drop_rounded,
+                  controlled: false,
+                  value: 40,
+                ),
+              ],
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,

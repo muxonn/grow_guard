@@ -2,29 +2,37 @@ import 'package:flutter/material.dart';
 import 'optimal_parameters.dart';
 
 class SensorData extends StatelessWidget {
+  const SensorData({
+    super.key,
+    required this.type,
+    required this.icon,
+    required this.controlled,
+    required this.value,
+  });
+
   final String type;
   final IconData icon;
   final bool controlled;
-  const SensorData(
-      {super.key,
-      required this.type,
-      required this.icon,
-      required this.controlled});
+  final int value;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // Hardcoded value (test purpose)
-    final value = 27;
     final parameter;
+    final unit;
+
     if (type == "Temperature") {
       parameter = tempParam;
+      unit = "°C";
     } else if (type == "Light") {
       parameter = lightParam;
+      unit = "lux";
     } else if (type == "Humidity") {
       parameter = humidityParam;
+      unit = "%";
     } else {
       parameter = {};
+      unit = "";
     }
 
     return Stack(
@@ -45,17 +53,22 @@ class SensorData extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Column(
-                      children: [
-                        Icon(
-                          icon,
-                          size: 38,
-                        ),
-                        Text(type, style: TextStyle(fontSize: 10)),
-                      ],
+                    Container(
+                      width: 70,
+                      child: Column(
+                        children: [
+                          Icon(
+                            icon,
+                            size: 38,
+                          ),
+                          SizedBox(height: 5),
+                          Text(type, style: TextStyle(fontSize: 10)),
+                        ],
+                      ),
                     ),
                     SizedBox(width: 20),
-                    Text(value.toString(), style: TextStyle(fontSize: 30)),
+                    Text(value.toString() + unit,
+                        style: TextStyle(fontSize: 30)),
                   ],
                 ),
               ),
