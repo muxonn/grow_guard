@@ -4,6 +4,7 @@ import 'package:grow_guard/utils/plant_block.dart';
 import 'package:grow_guard/utils/unactive_plant_block.dart';
 import 'ui/main_header.dart';
 import 'utils/colors.dart';
+import 'utils/app_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,22 +23,16 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.only(left: 5, right: 20),
           child: AppBar(
+            iconTheme: IconThemeData(color: Colors.black, size: 40),
             toolbarHeight: 140,
             centerTitle: true,
             title: Image.asset(
               'assets/images/logo-simple.png',
               width: 70,
             ),
-            leading: Icon(
-              Icons.menu_rounded,
-              color: Colors.black,
-              size: 40,
-            ),
             actions: [
               Icon(
                 Icons.bar_chart,
-                color: Colors.black,
-                size: 40,
               )
             ],
             backgroundColor: Colors.transparent,
@@ -45,6 +40,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(
