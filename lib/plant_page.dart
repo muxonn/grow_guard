@@ -44,7 +44,7 @@ class PlantPage extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Wrap(
-              runSpacing: 10,
+              runSpacing: 12,
               children: const [
                 SensorData(
                   type: "Temperature",

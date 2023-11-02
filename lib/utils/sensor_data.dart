@@ -42,6 +42,13 @@ class SensorData extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(24)),
             color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(-3, 3)),
+            ],
           ),
           width: size.width / 1.5,
           height: size.height / 7,
