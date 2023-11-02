@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grow_guard/home_page.dart';
+import 'package:grow_guard/utils/colors.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -18,7 +20,29 @@ class AppDrawer extends StatelessWidget {
 
   Widget buildHeader(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      color: forestGreen,
+      padding: EdgeInsets.only(
+        top: 24 + MediaQuery.of(context).padding.top,
+        bottom: 24,
+      ),
+      child: Column(
+        children: const [
+          CircleAvatar(
+            radius: 52,
+            backgroundImage: NetworkImage(
+                "https://bi.im-g.pl/im/d1/65/19/z26629841AMP,Barack-Obama-w-2012-r---oficjalny-portret-prezyden.jpg"),
+          ),
+          SizedBox(height: 12),
+          Text(
+            "Barack Obama",
+            style: TextStyle(fontSize: 28, color: Colors.white),
+          ),
+          Text(
+            "obama@barack.ru",
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          )
+        ],
+      ),
     );
   }
 
@@ -31,7 +55,13 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home),
             title: Text("Home"),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const HomePage(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.person),
