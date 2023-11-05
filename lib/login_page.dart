@@ -8,74 +8,81 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: forestGreen,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              margin: EdgeInsets.only(top: 50),
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(100),
-                  bottomRight: Radius.circular(100),
-                ),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    spreadRadius: 10,
-                    blurRadius: 10,
-                    offset: Offset(0, 0),
-                  ),
-                ],
-              ),
-              width: size.width - 50,
-              height: size.height - 200,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Log in",
-                    style: TextStyle(fontSize: 40),
-                  ),
-                  SizedBox(height: 40),
-                  InputBox(text: "Email", icon: Icons.person),
-                  SizedBox(height: 30),
-                  InputBox(text: "Password", icon: Icons.key),
-                  SizedBox(height: 30),
-                  Container(
-                    width: double.infinity,
-                    height: 59,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        backgroundColor: forestGreen,
-                      ),
-                      //TODO Add login to firebase
-                      onPressed: () {},
-                      child:
-                          const Text("Login", style: TextStyle(fontSize: 20)),
-                    ),
-                  ),
-                  SizedBox(height: 60),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(color: Colors.grey, fontSize: 16),
-                    ),
-                  )
-                ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 60),
+              child: Image.asset(
+                'assets/images/logo-simple-alternative.png',
+                width: 80,
               ),
             ),
-          ),
-        ],
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                width: size.width - 50,
+                height: size.height - 210,
+                margin: EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 10,
+                      blurRadius: 10,
+                      offset: Offset(0, 0),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Log in",
+                      style: TextStyle(fontSize: 40),
+                    ),
+                    SizedBox(height: 40),
+                    InputBox(text: "Email", icon: Icons.person),
+                    SizedBox(height: 30),
+                    InputBox(text: "Password", icon: Icons.key),
+                    SizedBox(height: 30),
+                    Container(
+                      width: double.infinity,
+                      height: 59,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          backgroundColor: forestGreen,
+                        ),
+                        //TODO Add login to firebase
+                        onPressed: () {},
+                        child:
+                            const Text("Login", style: TextStyle(fontSize: 20)),
+                      ),
+                    ),
+                    SizedBox(height: 60),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
