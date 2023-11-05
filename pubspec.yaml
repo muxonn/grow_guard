@@ -58,6 +58,7 @@ flutter:
   assets:
     - assets/images/logo.png
     - assets/images/logo-simple.png
+    - assets/images/logo-simple-alternative.png
     - assets/images/pleurotus-eryngii.png
     - assets/images/news-infection.png
 
