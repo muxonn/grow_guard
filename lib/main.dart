@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grow_guard/login_page.dart';
 
 import 'home_page.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Arial Rounded"),
-      home: HomePage(),
+      home: LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }
