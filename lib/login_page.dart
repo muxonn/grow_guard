@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grow_guard/home_page.dart';
 import 'package:grow_guard/utils/colors.dart';
 
 class LoginPage extends StatelessWidget {
@@ -6,6 +7,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _emailController = TextEditingController();
+    TextEditingController _passwordController = TextEditingController();
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: forestGreen,
@@ -16,7 +20,7 @@ class LoginPage extends StatelessWidget {
               margin: EdgeInsets.only(top: 60),
               child: Image.asset(
                 'assets/images/logo-simple-alternative.png',
-                width: 80,
+                width: 70,
               ),
             ),
             Align(
@@ -49,10 +53,20 @@ class LoginPage extends StatelessWidget {
                       style: TextStyle(fontSize: 40),
                     ),
                     SizedBox(height: 40),
-                    InputBox(text: "Email", icon: Icons.person),
-                    SizedBox(height: 30),
-                    InputBox(text: "Password", icon: Icons.key),
-                    SizedBox(height: 30),
+                    InputBox(
+                      text: "Email",
+                      icon: Icons.person,
+                      isPasswordField: false,
+                      controller: _emailController,
+                    ),
+                    SizedBox(height: 20),
+                    InputBox(
+                      text: "Password",
+                      icon: Icons.key,
+                      isPasswordField: true,
+                      controller: _passwordController,
+                    ),
+                    SizedBox(height: 40),
                     Container(
                       width: double.infinity,
                       height: 59,
@@ -64,7 +78,14 @@ class LoginPage extends StatelessWidget {
                           backgroundColor: forestGreen,
                         ),
                         //TODO Add login to firebase
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                          );
+                        },
                         child:
                             const Text("Login", style: TextStyle(fontSize: 20)),
                       ),
@@ -93,15 +114,23 @@ class InputBox extends StatelessWidget {
     super.key,
     required this.text,
     required this.icon,
+    required this.isPasswordField,
+    required this.controller,
   });
+
   final String text;
   final IconData icon;
+  final TextEditingController controller;
+  final bool isPasswordField;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 59,
       child: TextField(
+        controller: controller,
+
+        obscureText: isPasswordField,
         cursorColor: Colors.grey,
         //textAlign: TextAlign.center,
         decoration: InputDecoration(
