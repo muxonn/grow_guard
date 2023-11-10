@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grow_guard/plant_page.dart';
+import 'package:grow_guard/views/plant_page.dart';
 import 'package:grow_guard/utils/colors.dart';
 import 'package:grow_guard/utils/unactive_plant_block.dart';
 

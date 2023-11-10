@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grow_guard/login_page.dart';
+import 'package:grow_guard/views/login_page.dart';
 
-import 'home_page.dart';
+import 'views/home_page.dart';
 
 void main() {
   runApp(const MyApp());

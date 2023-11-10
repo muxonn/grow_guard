@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:grow_guard/home_page.dart';
+import 'package:grow_guard/views/home_page.dart';
 import 'package:grow_guard/utils/colors.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends HookWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passwordController = TextEditingController();
-
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
     final size = MediaQuery.of(context).size;
+
+    useEffect(() {});
+
     return Scaffold(
       backgroundColor: forestGreen,
       body: SingleChildScrollView(
@@ -57,14 +60,14 @@ class LoginPage extends StatelessWidget {
                       text: "Email",
                       icon: Icons.person,
                       isPasswordField: false,
-                      controller: _emailController,
+                      controller: emailController,
                     ),
                     SizedBox(height: 20),
                     InputBox(
                       text: "Password",
                       icon: Icons.key,
                       isPasswordField: true,
-                      controller: _passwordController,
+                      controller: passwordController,
                     ),
                     SizedBox(height: 40),
                     Container(
@@ -93,7 +96,7 @@ class LoginPage extends StatelessWidget {
                     SizedBox(height: 60),
                     TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "Sign Up",
                         style: TextStyle(color: Colors.grey, fontSize: 16),
                       ),
@@ -129,7 +132,6 @@ class InputBox extends StatelessWidget {
       height: 59,
       child: TextField(
         controller: controller,
-
         obscureText: isPasswordField,
         cursorColor: Colors.grey,
         //textAlign: TextAlign.center,
@@ -143,7 +145,7 @@ class InputBox extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
           hintText: text,
           prefixIcon: Padding(

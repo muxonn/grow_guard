@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:grow_guard/utils/news_block.dart';
 import 'package:grow_guard/utils/plant_block.dart';
 import 'package:grow_guard/utils/unactive_plant_block.dart';
-import 'ui/main_header.dart';
-import 'utils/colors.dart';
-import 'utils/app_drawer.dart';
+import '../ui/main_header.dart';
+import '../utils/colors.dart';
+import '../utils/app_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
