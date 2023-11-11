@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grow_guard/views/plant_page.dart';
 import 'package:grow_guard/utils/colors.dart';
-import 'package:grow_guard/utils/unactive_plant_block.dart';
 
 class PlantBlock extends StatelessWidget {
   final String title;
@@ -37,7 +36,7 @@ class PlantBlock extends StatelessWidget {
                 margin: const EdgeInsets.only(left: 10, bottom: 20),
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 22,
                     color: Colors.white,
                   ),
@@ -49,7 +48,7 @@ class PlantBlock extends StatelessWidget {
             top: -20,
             left: 10,
             child: Image.asset(
-              "assets/images/" + image,
+              "assets/images/$image",
               width: 120,
             ),
           ),

@@ -25,8 +25,8 @@ class AppDrawer extends StatelessWidget {
         top: 24 + MediaQuery.of(context).padding.top,
         bottom: 24,
       ),
-      child: Column(
-        children: const [
+      child: const Column(
+        children: [
           CircleAvatar(
             radius: 52,
             backgroundImage: NetworkImage(
@@ -48,13 +48,13 @@ class AppDrawer extends StatelessWidget {
 
   Widget buildMenuItems(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       child: Wrap(
         runSpacing: 10,
         children: [
           ListTile(
             leading: const Icon(Icons.home),
-            title: Text("Home"),
+            title: const Text("Home"),
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -65,25 +65,25 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.person),
-            title: Text("Profile"),
+            title: const Text("Profile"),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.settings),
-            title: Text("Settings"),
+            title: const Text("Settings"),
             onTap: () {},
           ),
-          Divider(
+          const Divider(
             color: Colors.black54,
           ),
           ListTile(
             leading: const Icon(Icons.info),
-            title: Text("Details"),
+            title: const Text("Details"),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.logout),
-            title: Text("Log out"),
+            title: const Text("Log out"),
             onTap: () {},
           ),
         ],

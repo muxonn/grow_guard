@@ -17,20 +17,20 @@ class StatsNavigator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(40)),
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(40)),
           color: active ? Colors.white : forestGreen),
       height: size.height / 9,
       width: size.width / 2,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.bar_chart,
                   color: active ? Colors.black : Colors.white),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Text(
                 text,
                 style: TextStyle(

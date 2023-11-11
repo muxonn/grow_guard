@@ -17,7 +17,7 @@ class InfoNavigator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(topRight: Radius.circular(40)),
+        borderRadius: const BorderRadius.only(topRight: Radius.circular(40)),
         color: active ? Colors.white : forestGreen,
       ),
       height: size.height / 9,
@@ -25,7 +25,7 @@ class InfoNavigator extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             text,
             style: TextStyle(

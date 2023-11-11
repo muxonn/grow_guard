@@ -13,7 +13,7 @@ class UnactivePlantBlock extends StatelessWidget {
       ),
       width: 130,
       height: 160,
-      child: Center(
+      child: const Center(
         child: Icon(
           Icons.add_rounded,
           color: coldGray,

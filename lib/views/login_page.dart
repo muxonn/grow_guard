@@ -12,7 +12,9 @@ class LoginPage extends HookWidget {
     final passwordController = useTextEditingController();
     final size = MediaQuery.of(context).size;
 
-    useEffect(() {});
+    useEffect(() {
+      return null;
+    });
 
     return Scaffold(
       backgroundColor: forestGreen,
@@ -20,7 +22,7 @@ class LoginPage extends HookWidget {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 60),
+              margin: const EdgeInsets.only(top: 60),
               child: Image.asset(
                 'assets/images/logo-simple-alternative.png',
                 width: 70,
@@ -31,7 +33,7 @@ class LoginPage extends HookWidget {
               child: Container(
                 width: size.width - 50,
                 height: size.height - 210,
-                margin: EdgeInsets.only(top: 50),
+                margin: const EdgeInsets.only(top: 50),
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
@@ -44,7 +46,7 @@ class LoginPage extends HookWidget {
                       color: Colors.black.withOpacity(0.3),
                       spreadRadius: 10,
                       blurRadius: 10,
-                      offset: Offset(0, 0),
+                      offset: const Offset(0, 0),
                     ),
                   ],
                 ),
@@ -55,22 +57,22 @@ class LoginPage extends HookWidget {
                       "Log in",
                       style: TextStyle(fontSize: 40),
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     InputBox(
                       text: "Email",
                       icon: Icons.person,
                       isPasswordField: false,
                       controller: emailController,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     InputBox(
                       text: "Password",
                       icon: Icons.key,
                       isPasswordField: true,
                       controller: passwordController,
                     ),
-                    SizedBox(height: 40),
-                    Container(
+                    const SizedBox(height: 40),
+                    SizedBox(
                       width: double.infinity,
                       height: 59,
                       child: ElevatedButton(
@@ -93,7 +95,7 @@ class LoginPage extends HookWidget {
                             const Text("Login", style: TextStyle(fontSize: 20)),
                       ),
                     ),
-                    SizedBox(height: 60),
+                    const SizedBox(height: 60),
                     TextButton(
                       onPressed: () {},
                       child: const Text(
@@ -128,7 +130,7 @@ class InputBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 59,
       child: TextField(
         controller: controller,

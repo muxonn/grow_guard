@@ -14,7 +14,7 @@ class PlantPage extends StatelessWidget {
       backgroundColor: forestGreen,
       appBar: AppBar(
         toolbarHeight: 130,
-        title: Text(
+        title: const Text(
           "Dashboard",
           style: TextStyle(fontSize: 20),
         ),
@@ -22,7 +22,7 @@ class PlantPage extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_outlined,
             size: 36,
           ),
@@ -41,11 +41,11 @@ class PlantPage extends StatelessWidget {
             ),
             transform: Matrix4.translationValues(-200, -40, 0),
           ),
-          Align(
+          const Align(
             alignment: Alignment.topCenter,
             child: Wrap(
               runSpacing: 12,
-              children: const [
+              children: [
                 SensorData(
                   type: "Temperature",
                   icon: Icons.thermostat,
@@ -96,7 +96,7 @@ class PlantPage extends StatelessWidget {
                       ),
                       width: 120,
                       height: 120,
-                      child: Icon(
+                      child: const Icon(
                         Icons.camera_alt_outlined,
                         size: 80,
                       ),

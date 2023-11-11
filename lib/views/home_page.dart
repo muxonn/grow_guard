@@ -3,7 +3,6 @@ import 'package:grow_guard/utils/news_block.dart';
 import 'package:grow_guard/utils/plant_block.dart';
 import 'package:grow_guard/utils/unactive_plant_block.dart';
 import '../ui/main_header.dart';
-import '../utils/colors.dart';
 import '../utils/app_drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,14 +22,14 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.only(left: 5, right: 20),
           child: AppBar(
-            iconTheme: IconThemeData(color: Colors.black, size: 40),
+            iconTheme: const IconThemeData(color: Colors.black, size: 40),
             toolbarHeight: 140,
             centerTitle: true,
             title: Image.asset(
               'assets/images/logo-simple.png',
               width: 70,
             ),
-            actions: [
+            actions: const [
               Icon(
                 Icons.bar_chart,
               )
@@ -40,14 +39,14 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      drawer: AppDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      drawer: const AppDrawer(),
+      body: const Padding(
+        padding: EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const MainHeader(text: "My shrooms"),
-            const SizedBox(height: 50),
+            MainHeader(text: "My shrooms"),
+            SizedBox(height: 50),
             Row(
               children: [
                 PlantBlock(
@@ -57,18 +56,18 @@ class _HomePageState extends State<HomePage> {
                 UnactivePlantBlock(),
               ],
             ),
-            const SizedBox(height: 20),
-            const MainHeader(text: "Explore News"),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
+            MainHeader(text: "Explore News"),
+            SizedBox(height: 20),
             Row(
               children: [
-                const NewsBlock(
+                NewsBlock(
                   title: "Deadly fungal infection",
                   image: "https://picsum.photos/250?image=9",
                   hyperlink:
                       "https://www.nbcnews.com/health/health-news/cdc-fungal-infection-candida-auris-alarming-spread-rcna75477",
                 ),
-                const SizedBox(width: 20),
+                SizedBox(width: 20),
                 NewsBlock(
                   title: "Fungi foraging: 5 safe and edible wild mushrooms",
                   image:

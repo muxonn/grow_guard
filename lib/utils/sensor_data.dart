@@ -18,8 +18,8 @@ class SensorData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final parameter;
-    final unit;
+    final Map<String, int> parameter;
+    final String unit;
 
     if (type == "Temperature") {
       parameter = tempParam;
@@ -40,14 +40,14 @@ class SensorData extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(24)),
+            borderRadius: const BorderRadius.all(Radius.circular(24)),
             color: Colors.white,
             boxShadow: [
               BoxShadow(
                   color: Colors.black.withOpacity(0.2),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(-3, 3)),
+                  offset: const Offset(-3, 3)),
             ],
           ),
           width: size.width / 1.5,
@@ -60,7 +60,7 @@ class SensorData extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 70,
                       child: Column(
                         children: [
@@ -68,14 +68,14 @@ class SensorData extends StatelessWidget {
                             icon,
                             size: 38,
                           ),
-                          SizedBox(height: 5),
-                          Text(type, style: TextStyle(fontSize: 10)),
+                          const SizedBox(height: 5),
+                          Text(type, style: const TextStyle(fontSize: 10)),
                         ],
                       ),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Text(value.toString() + unit,
-                        style: TextStyle(fontSize: 30)),
+                        style: const TextStyle(fontSize: 30)),
                   ],
                 ),
               ),
@@ -87,14 +87,14 @@ class SensorData extends StatelessWidget {
           left: size.width / 1.65,
           bottom: size.height / 12,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
             ),
             width: size.width / 12,
             height: size.height / 12,
             child: Icon(
-              value > parameter["min"] && value < parameter["max"]
+              value > parameter["min"]! && value < parameter["max"]!
                   ? Icons.done_outlined
                   : Icons.warning_rounded,
               color: Colors.black,

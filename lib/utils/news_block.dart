@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
 
 class NewsBlock extends StatelessWidget {
   final String title;
@@ -15,7 +14,7 @@ class NewsBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.all(Radius.circular(24)),
+      borderRadius: const BorderRadius.all(Radius.circular(24)),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -48,15 +47,15 @@ class NewsBlock extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     hyperlink,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 5,
                       color: Colors.white,
                     ),
