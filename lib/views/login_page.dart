@@ -2,14 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:grow_guard/views/home_page.dart';
 import 'package:grow_guard/utils/colors.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:grow_guard/user_auth/firebase_auth_services.dart';
 
 class LoginPage extends HookWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuthService _auth = FirebaseAuthService();
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
+
+    void signIn() async {
+      String email = emailController.text;
+      String password = passwordController.text;
+
+      User? user = await _auth.signInWithEmailAndPassword(email, password);
+
+      if (user != null) {
+        print("User successfully signed in!");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ),
+        );
+      } else {
+        print("Wrong email or password");
+      }
+    }
+
     final size = MediaQuery.of(context).size;
     useEffect(() {});
 
@@ -79,15 +102,7 @@ class LoginPage extends HookWidget {
                           ),
                           backgroundColor: forestGreen,
                         ),
-                        //TODO Add login to firebase
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomePage(),
-                            ),
-                          );
-                        },
+                        onPressed: signIn,
                         child:
                             const Text("Login", style: TextStyle(fontSize: 20)),
                       ),
