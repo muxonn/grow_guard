@@ -16,6 +16,7 @@ class SignUpPage extends HookWidget {
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
     final repeatPasswordController = useTextEditingController();
+    final errorCode = useState("");
 
     void signUp() async {
       String email = emailController.text;
@@ -24,12 +25,14 @@ class SignUpPage extends HookWidget {
 
       if (password != repeatPassword) {
         print("Passwords must be the same!");
+
+        errorCode.value = "Passwords are not the same";
         return;
       }
 
-      User? user = await auth.signUpWithEmailAndPassword(email, password);
+      Object? user = await auth.signUpWithEmailAndPassword(email, password);
 
-      if (user != null) {
+      if (user is User) {
         print("User successfully signed up!");
         // ignore: use_build_context_synchronously
         Navigator.push(
@@ -40,6 +43,7 @@ class SignUpPage extends HookWidget {
         );
       } else {
         print("Some error occured");
+        errorCode.value = user.toString();
       }
     }
 
@@ -107,6 +111,7 @@ class SignUpPage extends HookWidget {
                       icon: Icons.key,
                       isPasswordField: true,
                       controller: repeatPasswordController,
+                      errorCode: errorCode.value,
                     ),
                     SizedBox(height: 20),
                     Container(

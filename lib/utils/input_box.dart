@@ -7,12 +7,14 @@ class InputBox extends StatelessWidget {
     required this.icon,
     required this.isPasswordField,
     required this.controller,
+    this.errorCode,
   });
 
   final String text;
   final IconData icon;
   final TextEditingController controller;
   final bool isPasswordField;
+  final String? errorCode;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,15 @@ class InputBox extends StatelessWidget {
             borderSide: const BorderSide(color: Colors.grey),
           ),
           hintText: text,
-          errorText: "Wrong password",
+          errorText: errorCode == "" ? null : errorCode,
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(color: Colors.transparent),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(color: Colors.transparent),
+          ),
           errorStyle: TextStyle(fontSize: 12),
           prefixIcon: Padding(
             padding: const EdgeInsets.only(left: 30, right: 20),

@@ -94,7 +94,7 @@ class LoginPage extends HookWidget {
                       isPasswordField: true,
                       controller: passwordController,
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 30),
                     Container(
                       width: double.infinity,
                       height: 59,
@@ -110,7 +110,7 @@ class LoginPage extends HookWidget {
                             const Text("Login", style: TextStyle(fontSize: 20)),
                       ),
                     ),
-                    SizedBox(height: 40),
+                    SizedBox(height: 30),
                     //Text("Wrong email or password!"),
                     TextButton(
                       onPressed: () {

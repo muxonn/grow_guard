@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<User?> signUpWithEmailAndPassword(
+  Future<Object?> signUpWithEmailAndPassword(
       String email, String password) async {
     try {
       UserCredential credential = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       return credential.user;
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
       debugPrint("Some error occured!");
+      print(e.code);
+      return e.code;
     }
     return null;
   }
@@ -22,8 +24,9 @@ class FirebaseAuthService {
       UserCredential credential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       return credential.user;
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
       debugPrint("Some error occured!");
+      print(e.code);
     }
     return null;
   }
