@@ -12,7 +12,7 @@ class SignUpPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FirebaseAuthService _auth = FirebaseAuthService();
+    final FirebaseAuthService auth = FirebaseAuthService();
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
     final repeatPasswordController = useTextEditingController();
@@ -27,7 +27,7 @@ class SignUpPage extends HookWidget {
         return;
       }
 
-      User? user = await _auth.signUpWithEmailAndPassword(email, password);
+      User? user = await auth.signUpWithEmailAndPassword(email, password);
 
       if (user != null) {
         print("User successfully signed up!");
@@ -64,7 +64,7 @@ class SignUpPage extends HookWidget {
                 width: size.width - 50,
                 height: size.height - 180,
                 margin: EdgeInsets.only(top: 30),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 40),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(100),
@@ -94,21 +94,21 @@ class SignUpPage extends HookWidget {
                       isPasswordField: false,
                       controller: emailController,
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     InputBox(
                       text: "Password",
                       icon: Icons.key,
                       isPasswordField: true,
                       controller: passwordController,
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     InputBox(
                       text: "Repeat password",
                       icon: Icons.key,
                       isPasswordField: true,
                       controller: repeatPasswordController,
                     ),
-                    SizedBox(height: 40),
+                    SizedBox(height: 20),
                     Container(
                       width: double.infinity,
                       height: 59,
@@ -124,7 +124,7 @@ class SignUpPage extends HookWidget {
                             style: TextStyle(fontSize: 20)),
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 15),
                     TextButton(
                       onPressed: () {
                         Navigator.push(

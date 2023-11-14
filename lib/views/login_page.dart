@@ -12,7 +12,7 @@ class LoginPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FirebaseAuthService _auth = FirebaseAuthService();
+    final FirebaseAuthService auth = FirebaseAuthService();
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
 
@@ -20,7 +20,7 @@ class LoginPage extends HookWidget {
       String email = emailController.text;
       String password = passwordController.text;
 
-      User? user = await _auth.signInWithEmailAndPassword(email, password);
+      User? user = await auth.signInWithEmailAndPassword(email, password);
 
       if (user != null) {
         print("User successfully signed in!");
@@ -57,7 +57,7 @@ class LoginPage extends HookWidget {
                 width: size.width - 50,
                 height: size.height - 210,
                 margin: EdgeInsets.only(top: 50),
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 40),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(100),
@@ -87,14 +87,14 @@ class LoginPage extends HookWidget {
                       isPasswordField: false,
                       controller: emailController,
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     InputBox(
                       text: "Password",
                       icon: Icons.key,
                       isPasswordField: true,
                       controller: passwordController,
                     ),
-                    SizedBox(height: 40),
+                    SizedBox(height: 20),
                     Container(
                       width: double.infinity,
                       height: 59,
@@ -110,7 +110,8 @@ class LoginPage extends HookWidget {
                             const Text("Login", style: TextStyle(fontSize: 20)),
                       ),
                     ),
-                    SizedBox(height: 60),
+                    SizedBox(height: 40),
+                    //Text("Wrong email or password!"),
                     TextButton(
                       onPressed: () {
                         Navigator.push(

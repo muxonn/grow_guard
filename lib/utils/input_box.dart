@@ -17,7 +17,7 @@ class InputBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 59,
+      height: 80,
       child: TextField(
         controller: controller,
         obscureText: isPasswordField,
@@ -37,6 +37,8 @@ class InputBox extends StatelessWidget {
             borderSide: const BorderSide(color: Colors.grey),
           ),
           hintText: text,
+          errorText: "Wrong password",
+          errorStyle: TextStyle(fontSize: 12),
           prefixIcon: Padding(
             padding: const EdgeInsets.only(left: 30, right: 20),
             child: Icon(
