@@ -11,24 +11,21 @@ class FirebaseAuthService {
           email: email, password: password);
       return credential.user;
     } on FirebaseAuthException catch (e) {
-      debugPrint("Some error occured!");
-      print(e.code);
+      debugPrint(e.code);
       return e.code;
     }
-    return null;
   }
 
-  Future<User?> signInWithEmailAndPassword(
+  Future<Object?> signInWithEmailAndPassword(
       String email, String password) async {
     try {
       UserCredential credential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       return credential.user;
     } on FirebaseAuthException catch (e) {
-      debugPrint("Some error occured!");
-      print(e.code);
+      debugPrint(e.code);
+      return e.code;
     }
-    return null;
   }
 
   void signOut() {

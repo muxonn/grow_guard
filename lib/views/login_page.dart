@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grow_guard/user_auth/error_handling.dart';
 import 'package:grow_guard/views/home_page.dart';
 import 'package:grow_guard/utils/colors.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -15,15 +16,16 @@ class LoginPage extends HookWidget {
     final FirebaseAuthService auth = FirebaseAuthService();
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
+    final errorCode = useState("");
 
     void signIn() async {
       String email = emailController.text;
       String password = passwordController.text;
 
-      User? user = await auth.signInWithEmailAndPassword(email, password);
+      Object? result = await auth.signInWithEmailAndPassword(email, password);
 
-      if (user != null) {
-        print("User successfully signed in!");
+      if (result is User) {
+        debugPrint("User successfully signed in!");
         // ignore: use_build_context_synchronously
         Navigator.push(
           context,
@@ -32,7 +34,7 @@ class LoginPage extends HookWidget {
           ),
         );
       } else {
-        print("Wrong email or password");
+        errorCode.value = ErrorHandling.handleError(result.toString());
       }
     }
 
@@ -87,12 +89,12 @@ class LoginPage extends HookWidget {
                       isPasswordField: false,
                       controller: emailController,
                     ),
-                    SizedBox(height: 10),
                     InputBox(
                       text: "Password",
                       icon: Icons.key,
                       isPasswordField: true,
                       controller: passwordController,
+                      errorCode: errorCode.value,
                     ),
                     SizedBox(height: 30),
                     Container(

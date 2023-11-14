@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grow_guard/user_auth/error_handling.dart';
 import 'package:grow_guard/views/home_page.dart';
 import 'package:grow_guard/utils/colors.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -24,16 +25,14 @@ class SignUpPage extends HookWidget {
       String repeatPassword = repeatPasswordController.text;
 
       if (password != repeatPassword) {
-        print("Passwords must be the same!");
-
         errorCode.value = "Passwords are not the same";
         return;
       }
 
-      Object? user = await auth.signUpWithEmailAndPassword(email, password);
+      Object? result = await auth.signUpWithEmailAndPassword(email, password);
 
-      if (user is User) {
-        print("User successfully signed up!");
+      if (result is User) {
+        debugPrint("User successfully signed up!");
         // ignore: use_build_context_synchronously
         Navigator.push(
           context,
@@ -42,8 +41,7 @@ class SignUpPage extends HookWidget {
           ),
         );
       } else {
-        print("Some error occured");
-        errorCode.value = user.toString();
+        errorCode.value = ErrorHandling.handleError(result.toString());
       }
     }
 
@@ -91,21 +89,19 @@ class SignUpPage extends HookWidget {
                       "Sign Up",
                       style: TextStyle(fontSize: 40),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 40),
                     InputBox(
                       text: "Email",
                       icon: Icons.person,
                       isPasswordField: false,
                       controller: emailController,
                     ),
-                    SizedBox(height: 10),
                     InputBox(
                       text: "Password",
                       icon: Icons.key,
                       isPasswordField: true,
                       controller: passwordController,
                     ),
-                    SizedBox(height: 10),
                     InputBox(
                       text: "Repeat password",
                       icon: Icons.key,
