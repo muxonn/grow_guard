@@ -18,8 +18,11 @@ class SignUpPage extends HookWidget {
     final passwordController = useTextEditingController();
     final repeatPasswordController = useTextEditingController();
     final errorCode = useState("");
+    final isSigningUp = useState(false);
 
     void signUp() async {
+      isSigningUp.value = true;
+
       String email = emailController.text;
       String password = passwordController.text;
       String repeatPassword = repeatPasswordController.text;
@@ -30,6 +33,8 @@ class SignUpPage extends HookWidget {
       }
 
       Object? result = await auth.signUpWithEmailAndPassword(email, password);
+
+      isSigningUp.value = false;
 
       if (result is User) {
         debugPrint("User successfully signed up!");
@@ -121,8 +126,17 @@ class SignUpPage extends HookWidget {
                           backgroundColor: Colors.black,
                         ),
                         onPressed: signUp,
-                        child: const Text("Sign Up",
-                            style: TextStyle(fontSize: 20)),
+                        child: isSigningUp.value
+                            ? const SizedBox(
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                  strokeWidth: 3,
+                                ),
+                              )
+                            : const Text(
+                                "Sign Up",
+                                style: TextStyle(fontSize: 20),
+                              ),
                       ),
                     ),
                     SizedBox(height: 15),

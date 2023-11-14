@@ -17,12 +17,17 @@ class LoginPage extends HookWidget {
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
     final errorCode = useState("");
+    final isLoggingIn = useState(false);
 
     void signIn() async {
+      isLoggingIn.value = true;
+
       String email = emailController.text;
       String password = passwordController.text;
 
       Object? result = await auth.signInWithEmailAndPassword(email, password);
+
+      isLoggingIn.value = false;
 
       if (result is User) {
         debugPrint("User successfully signed in!");
@@ -108,8 +113,19 @@ class LoginPage extends HookWidget {
                           backgroundColor: forestGreen,
                         ),
                         onPressed: signIn,
-                        child:
-                            const Text("Login", style: TextStyle(fontSize: 20)),
+                        child: isLoggingIn.value
+                            ? const SizedBox(
+                                height: 26,
+                                width: 26,
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                  strokeWidth: 3,
+                                ),
+                              )
+                            : const Text(
+                                "Login",
+                                style: TextStyle(fontSize: 20),
+                              ),
                       ),
                     ),
                     SizedBox(height: 30),
