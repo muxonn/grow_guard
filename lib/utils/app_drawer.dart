@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grow_guard/views/home_page.dart';
 import 'package:grow_guard/utils/colors.dart';
+import 'package:grow_guard/user_auth/firebase_auth_services.dart';
+import 'package:grow_guard/views/login_page.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -84,7 +86,16 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.logout),
             title: const Text("Log out"),
-            onTap: () {},
+            onTap: () {
+              FirebaseAuthService auth = FirebaseAuthService();
+              auth.signOut();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginPage(),
+                ),
+              );
+            },
           ),
         ],
       ),

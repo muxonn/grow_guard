@@ -27,4 +27,9 @@ class FirebaseAuthService {
     }
     return null;
   }
+
+  void signOut() {
+    _auth.signOut();
+    debugPrint("Successfully logged out!");
+  }
 }

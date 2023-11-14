@@ -6,23 +6,30 @@ import 'package:grow_guard/utils/input_box.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:grow_guard/user_auth/firebase_auth_services.dart';
 
-class LoginPage extends HookWidget {
-  const LoginPage({super.key});
+class SignUpPage extends HookWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final FirebaseAuthService _auth = FirebaseAuthService();
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
+    final repeatPasswordController = useTextEditingController();
 
-    void signIn() async {
+    void signUp() async {
       String email = emailController.text;
       String password = passwordController.text;
+      String repeatPassword = repeatPasswordController.text;
 
-      User? user = await _auth.signInWithEmailAndPassword(email, password);
+      if (password != repeatPassword) {
+        print("Passwords must be the same!");
+        return;
+      }
+
+      User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
       if (user != null) {
-        print("User successfully signed in!");
+        print("User successfully signed up!");
         // ignore: use_build_context_synchronously
         Navigator.push(
           context,
@@ -31,7 +38,7 @@ class LoginPage extends HookWidget {
           ),
         );
       } else {
-        print("Wrong email or password");
+        print("Some error occured");
       }
     }
 
@@ -39,14 +46,14 @@ class LoginPage extends HookWidget {
     useEffect(() {});
 
     return Scaffold(
-      backgroundColor: forestGreen,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               margin: EdgeInsets.only(top: 60),
               child: Image.asset(
-                'assets/images/logo-simple-alternative.png',
+                'assets/images/logo-simple.png',
                 width: 70,
               ),
             ),
@@ -54,8 +61,8 @@ class LoginPage extends HookWidget {
               alignment: Alignment.bottomCenter,
               child: Container(
                 width: size.width - 50,
-                height: size.height - 210,
-                margin: EdgeInsets.only(top: 50),
+                height: size.height - 180,
+                margin: EdgeInsets.only(top: 30),
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
@@ -76,10 +83,10 @@ class LoginPage extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Log in",
+                      "Sign Up",
                       style: TextStyle(fontSize: 40),
                     ),
-                    SizedBox(height: 40),
+                    SizedBox(height: 30),
                     InputBox(
                       text: "Email",
                       icon: Icons.person,
@@ -93,6 +100,13 @@ class LoginPage extends HookWidget {
                       isPasswordField: true,
                       controller: passwordController,
                     ),
+                    SizedBox(height: 20),
+                    InputBox(
+                      text: "Repeat password",
+                      icon: Icons.key,
+                      isPasswordField: true,
+                      controller: repeatPasswordController,
+                    ),
                     SizedBox(height: 40),
                     Container(
                       width: double.infinity,
@@ -102,19 +116,21 @@ class LoginPage extends HookWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
-                          backgroundColor: forestGreen,
+                          backgroundColor: Colors.black,
                         ),
-                        onPressed: signIn,
-                        child:
-                            const Text("Login", style: TextStyle(fontSize: 20)),
+                        onPressed: signUp,
+                        child: const Text("Sign Up",
+                            style: TextStyle(fontSize: 20)),
                       ),
                     ),
-                    SizedBox(height: 60),
+                    SizedBox(height: 30),
                     TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Sign Up",
-                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                        "Log In",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 102, 70, 70),
+                            fontSize: 16),
                       ),
                     )
                   ],
