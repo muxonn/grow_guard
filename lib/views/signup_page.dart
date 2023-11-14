@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:grow_guard/utils/input_box.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:grow_guard/user_auth/firebase_auth_services.dart';
+import 'package:grow_guard/views/login_page.dart';
 
 class SignUpPage extends HookWidget {
   const SignUpPage({super.key});
@@ -125,12 +126,17 @@ class SignUpPage extends HookWidget {
                     ),
                     SizedBox(height: 30),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        );
+                      },
                       child: const Text(
                         "Log In",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 102, 70, 70),
-                            fontSize: 16),
+                        style: TextStyle(color: coldGray, fontSize: 16),
                       ),
                     )
                   ],
