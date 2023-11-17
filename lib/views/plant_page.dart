@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:grow_guard/ui/info_navigator.dart';
 import 'package:grow_guard/ui/stats_navigator.dart';
 import 'package:grow_guard/utils/colors.dart';
 import 'package:grow_guard/utils/sensor_data.dart';
 
-class PlantPage extends StatelessWidget {
+class PlantPage extends HookWidget {
   const PlantPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final page_index = useState(0);
+
     return Scaffold(
       backgroundColor: forestGreen,
       appBar: AppBar(
@@ -83,7 +86,7 @@ class PlantPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                   width: size.width,
-                  height: size.height / 4,
+                  height: size.height / 8,
                 ),
                 Positioned.fill(
                   top: -40,
@@ -103,29 +106,27 @@ class PlantPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned.fill(
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Row(
-                      children: [
-                        InfoNavigator(
-                          size: size,
-                          text: "Information",
-                          active: true,
-                        ),
-                        StatsNavigator(
-                          size: size,
-                          text: "Statistics",
-                          active: false,
-                        )
-                      ],
-                    ),
-                  ),
-                )
               ],
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: Row(
+          children: [
+            InfoNavigator(
+              size: size,
+              text: "Information",
+              active: true,
+            ),
+            StatsNavigator(
+              size: size,
+              text: "Statistics",
+              active: false,
+            )
+          ],
+        ),
       ),
     );
   }
