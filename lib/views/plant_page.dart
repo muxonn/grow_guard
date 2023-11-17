@@ -4,6 +4,8 @@ import 'package:grow_guard/ui/info_navigator.dart';
 import 'package:grow_guard/ui/stats_navigator.dart';
 import 'package:grow_guard/utils/colors.dart';
 import 'package:grow_guard/utils/sensor_data.dart';
+import 'package:grow_guard/views/info_page.dart';
+import 'package:grow_guard/views/stats_page.dart';
 
 class PlantPage extends HookWidget {
   const PlantPage({super.key});
@@ -12,6 +14,8 @@ class PlantPage extends HookWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final page_index = useState(0);
+
+    final pages = [InfoPage(size: size), StatsPage()];
 
     return Scaffold(
       backgroundColor: forestGreen,
@@ -33,84 +37,7 @@ class PlantPage extends HookWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Stack(
-        children: [
-          Container(
-            width: 400,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/pleurotus-eryngii.png"),
-              ),
-            ),
-            transform: Matrix4.translationValues(-200, -40, 0),
-          ),
-          const Align(
-            alignment: Alignment.topCenter,
-            child: Wrap(
-              runSpacing: 12,
-              children: [
-                SensorData(
-                  type: "Temperature",
-                  icon: Icons.thermostat,
-                  controlled: false,
-                  value: 27,
-                ),
-                SizedBox(height: 10),
-                SensorData(
-                  type: "Light",
-                  icon: Icons.light_mode_rounded,
-                  controlled: false,
-                  value: 110,
-                ),
-                SizedBox(height: 10),
-                SensorData(
-                  type: "Humidity",
-                  icon: Icons.water_drop_rounded,
-                  controlled: false,
-                  value: 40,
-                ),
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40),
-                    ),
-                    color: Colors.white,
-                  ),
-                  width: size.width,
-                  height: size.height / 8,
-                ),
-                Positioned.fill(
-                  top: -40,
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      width: 120,
-                      height: 120,
-                      child: const Icon(
-                        Icons.camera_alt_outlined,
-                        size: 80,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+      body: InfoPage(size: size),
       bottomNavigationBar: Container(
         color: Colors.white,
         child: Row(
