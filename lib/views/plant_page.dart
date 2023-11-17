@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:grow_guard/ui/info_navigator.dart';
 import 'package:grow_guard/ui/stats_navigator.dart';
 import 'package:grow_guard/utils/colors.dart';
-import 'package:grow_guard/utils/sensor_data.dart';
 import 'package:grow_guard/views/info_page.dart';
 import 'package:grow_guard/views/stats_page.dart';
 
