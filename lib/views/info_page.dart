@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:grow_guard/utils/sensor_data.dart';
+import 'package:grow_guard/views/camera_page.dart';
 
-class InfoPage extends StatelessWidget {
+class InfoPage extends HookWidget {
   const InfoPage({
     super.key,
     required this.size,
@@ -11,6 +13,8 @@ class InfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cameraShadowVisibile = useState(true);
+
     return Stack(
       children: [
         Container(
@@ -68,18 +72,43 @@ class InfoPage extends StatelessWidget {
               ),
               Positioned.fill(
                 top: -40,
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    width: 120,
-                    height: 120,
-                    child: const Icon(
-                      Icons.camera_alt_outlined,
-                      size: 80,
+                child: GestureDetector(
+                  onTapDown: (details) {
+                    cameraShadowVisibile.value = false;
+                  },
+                  onTapCancel: () {
+                    cameraShadowVisibile.value = true;
+                  },
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CameraPage(),
+                      ),
+                    );
+                  },
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: cameraShadowVisibile.value
+                                  ? Colors.black.withOpacity(0.2)
+                                  : Colors.transparent,
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 0)),
+                        ],
+                      ),
+                      width: 100,
+                      height: 100,
+                      child: const Icon(
+                        Icons.camera_alt_outlined,
+                        size: 60,
+                      ),
                     ),
                   ),
                 ),
