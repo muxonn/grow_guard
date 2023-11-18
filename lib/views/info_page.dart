@@ -80,6 +80,7 @@ class InfoPage extends HookWidget {
                     cameraShadowVisibile.value = true;
                   },
                   onTap: () {
+                    cameraShadowVisibile.value = true;
                     Navigator.push(
                       context,
                       MaterialPageRoute(

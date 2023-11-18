@@ -59,11 +59,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/logo.png
-    - assets/images/logo-simple.png
-    - assets/images/logo-simple-alternative.png
-    - assets/images/pleurotus-eryngii.png
-    - assets/images/news-infection.png
+    - assets/images/
 
   fonts:
     - family: Arial Rounded
