@@ -8,6 +8,7 @@ class CameraPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final lastUpdated = useState("");
+    final gridView = useState(false);
 
     useEffect(() {
       //TODO: MOCKED VALUE
@@ -64,12 +65,24 @@ class CameraPage extends HookWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.crop_square, size: 40),
+                  onPressed: () {
+                    gridView.value = false;
+                  },
+                  icon: Icon(
+                      gridView.value
+                          ? Icons.square_outlined
+                          : Icons.square_rounded,
+                      size: 40),
                 ),
                 IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.grid_view, size: 40),
+                  onPressed: () {
+                    gridView.value = true;
+                  },
+                  icon: Icon(
+                      gridView.value
+                          ? Icons.grid_view_rounded
+                          : Icons.grid_view,
+                      size: 40),
                 ),
               ],
             ),
