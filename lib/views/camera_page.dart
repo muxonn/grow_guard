@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:grow_guard/utils/colors.dart';
 
 class CameraPage extends HookWidget {
   const CameraPage({super.key});

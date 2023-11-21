@@ -36,11 +36,11 @@ class AppDrawer extends StatelessWidget {
           ),
           SizedBox(height: 12),
           Text(
-            "Barack Obama",
+            "Admin",
             style: TextStyle(fontSize: 28, color: Colors.white),
           ),
           Text(
-            "obama@barack.ru",
+            "admin@growguard.com",
             style: TextStyle(fontSize: 16, color: Colors.white),
           )
         ],
