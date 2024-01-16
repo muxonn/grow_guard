@@ -39,45 +39,47 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      drawer: const AppDrawer(),
-      body: const Padding(
-        padding: EdgeInsets.only(left: 20, right: 20, top: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MainHeader(text: "My shrooms"),
-            SizedBox(height: 50),
-            Row(
-              children: [
-                PlantBlock(
-                    title: "Pleurotus eryngii ",
-                    image: "pleurotus-eryngii.png"),
-                SizedBox(width: 20),
-                UnactivePlantBlock(),
-              ],
-            ),
-            SizedBox(height: 20),
-            MainHeader(text: "Explore News"),
-            SizedBox(height: 20),
-            Row(
-              children: [
-                NewsBlock(
-                  title: "Deadly fungal infection",
-                  image: "https://picsum.photos/250?image=9",
-                  hyperlink:
-                      "https://www.nbcnews.com/health/health-news/cdc-fungal-infection-candida-auris-alarming-spread-rcna75477",
-                ),
-                SizedBox(width: 20),
-                NewsBlock(
-                  title: "Fungi foraging: 5 safe and edible wild mushrooms",
-                  image:
-                      "https://static.euronews.com/articles/stories/07/16/53/52/828x466_cmsv2_68c503ac-4dde-5a7d-9c3a-1d3425602c64-7165352.jpg",
-                  hyperlink:
-                      "https://www.euronews.com/culture/2022/11/01/fungi-foraging-5-safe-and-edible-wild-mushrooms-to-look-out-for",
-                ),
-              ],
-            ),
-          ],
+      drawer: AppDrawer(),
+      body: const SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MainHeader(text: "My shrooms"),
+              SizedBox(height: 50),
+              Row(
+                children: [
+                  PlantBlock(
+                      title: "Pleurotus eryngii ",
+                      image: "pleurotus-eryngii.png"),
+                  SizedBox(width: 20),
+                  UnactivePlantBlock(),
+                ],
+              ),
+              SizedBox(height: 20),
+              MainHeader(text: "Explore News"),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  NewsBlock(
+                    title: "Deadly fungal infection",
+                    image: "https://picsum.photos/250?image=9",
+                    hyperlink:
+                        "https://www.nbcnews.com/health/health-news/cdc-fungal-infection-candida-auris-alarming-spread-rcna75477",
+                  ),
+                  SizedBox(width: 20),
+                  NewsBlock(
+                    title: "Fungi foraging: 5 safe and edible wild mushrooms",
+                    image:
+                        "https://static.euronews.com/articles/stories/07/16/53/52/828x466_cmsv2_68c503ac-4dde-5a7d-9c3a-1d3425602c64-7165352.jpg",
+                    hyperlink:
+                        "https://www.euronews.com/culture/2022/11/01/fungi-foraging-5-safe-and-edible-wild-mushrooms-to-look-out-for",
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
