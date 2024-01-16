@@ -58,7 +58,7 @@ class CameraPage extends HookWidget {
           const SizedBox(height: 10),
           Text(lastUpdated.value),
           Container(
-            width: 100,
+            width: 120,
             margin: const EdgeInsets.only(top: 50),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -124,7 +124,8 @@ class LoginPage extends HookWidget {
                               )
                             : const Text(
                                 "Login",
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
                               ),
                       ),
                     ),

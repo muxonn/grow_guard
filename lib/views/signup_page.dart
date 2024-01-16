@@ -135,7 +135,8 @@ class SignUpPage extends HookWidget {
                               )
                             : const Text(
                                 "Sign Up",
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
                               ),
                       ),
                     ),
