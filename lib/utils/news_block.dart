@@ -42,13 +42,13 @@ class NewsBlock extends StatelessWidget {
             width: 130,
             height: 140,
             child: Container(
-              margin: const EdgeInsets.only(left: 10, top: 50),
+              margin: const EdgeInsets.only(left: 10, top: 20, right: 10),
               child: Column(
                 children: [
                   Text(
                     title,
                     style: const TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                       color: Colors.white,
                     ),
                   ),
