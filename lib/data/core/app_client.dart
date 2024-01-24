@@ -6,4 +6,14 @@ class AppClient extends GGBaseClient {
     final response = await get(ClientPath.temperature(id, count));
     return response;
   }
+
+  Future<dynamic> getLighting(int id, int count) async {
+    final response = await get(ClientPath.lighting(id, count));
+    return response;
+  }
+
+  Future<dynamic> getHumidity(int id, int count) async {
+    final response = await get(ClientPath.humidity(id, count));
+    return response;
+  }
 }
