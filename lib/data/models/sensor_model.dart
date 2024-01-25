@@ -1,7 +1,7 @@
 class SensorModel {
   SensorModel({this.value, this.timestamp});
 
-  int? value;
+  double? value;
   String? timestamp;
 
   SensorModel.fromJson(Map<String, dynamic> json) {

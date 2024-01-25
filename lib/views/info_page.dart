@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:grow_guard/data/core/app_types.dart';
 import 'package:grow_guard/utils/sensor_data.dart';
 import 'package:grow_guard/views/camera_page.dart';
 
@@ -32,24 +33,24 @@ class InfoPage extends HookWidget {
             runSpacing: 12,
             children: [
               SensorData(
-                type: "Temperature",
+                type: SensorType.temperature,
                 icon: Icons.thermostat,
                 controlled: false,
-                value: 27,
+                deviceId: 1,
               ),
               SizedBox(height: 10),
               SensorData(
-                type: "Light",
+                type: SensorType.lighting,
                 icon: Icons.light_mode_rounded,
                 controlled: false,
-                value: 110,
+                deviceId: 1,
               ),
               SizedBox(height: 10),
               SensorData(
-                type: "Humidity",
+                type: SensorType.humidity,
                 icon: Icons.water_drop_rounded,
                 controlled: false,
-                value: 40,
+                deviceId: 1,
               ),
             ],
           ),

@@ -1,38 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:grow_guard/data/core/app_types.dart';
+import 'package:grow_guard/data/sensor_repository.dart';
 import 'optimal_parameters.dart';
 
-class SensorData extends StatelessWidget {
+class SensorData extends HookWidget {
   const SensorData({
     super.key,
     required this.type,
     required this.icon,
     required this.controlled,
-    required this.value,
+    required this.deviceId,
   });
 
-  final String type;
+  final SensorType type;
   final IconData icon;
   final bool controlled;
-  final int value;
+  final int deviceId;
+
+  Future<double> fetchData() async {
+    SensorRepository repository = SensorRepository();
+    var data = await repository.getSensorData(deviceId, 1, type);
+    if (data != null) {
+      return data[0].value!;
+    }
+
+    return 0;
+  }
 
   @override
   Widget build(BuildContext context) {
+    fetchData();
+    final future = useMemoized(fetchData);
+    final snapshot = useFuture(future);
+
+    final value = useState(0.0);
     final size = MediaQuery.of(context).size;
     final Map<String, int> parameter;
     final String unit;
+    final String name;
 
-    if (type == "Temperature") {
+    if (type == SensorType.temperature) {
       parameter = tempParam;
       unit = "°C";
-    } else if (type == "Light") {
+      name = "Temperature";
+    } else if (type == SensorType.lighting) {
       parameter = lightParam;
       unit = "lux";
-    } else if (type == "Humidity") {
+      name = "Light";
+    } else if (type == SensorType.humidity) {
       parameter = humidityParam;
       unit = "%";
+      name = "Humidity";
     } else {
       parameter = {"min": 0, "max": 0};
       unit = "";
+      name = "Not defined";
+    }
+
+    if (snapshot.hasData) {
+      value.value = snapshot.data!;
     }
 
     return Stack(
@@ -69,12 +96,12 @@ class SensorData extends StatelessWidget {
                             size: 38,
                           ),
                           const SizedBox(height: 5),
-                          Text(type, style: const TextStyle(fontSize: 10)),
+                          Text(name, style: const TextStyle(fontSize: 10)),
                         ],
                       ),
                     ),
                     const SizedBox(width: 20),
-                    Text(value.toString() + unit,
+                    Text(value.value.toString() + unit,
                         style: const TextStyle(fontSize: 30)),
                   ],
                 ),
@@ -94,7 +121,7 @@ class SensorData extends StatelessWidget {
             width: size.width / 12,
             height: size.height / 12,
             child: Icon(
-              value > parameter["min"]! && value < parameter["max"]!
+              value.value > parameter["min"]! && value.value < parameter["max"]!
                   ? Icons.done_outlined
                   : Icons.warning_rounded,
               color: Colors.black,
