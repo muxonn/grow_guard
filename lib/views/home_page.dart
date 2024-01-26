@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grow_guard/utils/news_block.dart';
 import 'package:grow_guard/utils/plant_block.dart';
 import 'package:grow_guard/utils/unactive_plant_block.dart';
+import 'package:grow_guard/views/led_page.dart';
 import '../ui/main_header.dart';
 import '../utils/app_drawer.dart';
 
@@ -29,10 +30,17 @@ class _HomePageState extends State<HomePage> {
               'assets/images/logo-simple.png',
               width: 70,
             ),
-            actions: const [
-              Icon(
-                Icons.bar_chart,
-              )
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LedPage(),
+                      ),
+                    );
+                  },
+                  icon: Icon(Icons.lightbulb))
             ],
             backgroundColor: Colors.transparent,
             elevation: 0,
