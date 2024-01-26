@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:grow_guard/data/core/app_types.dart';
 import 'package:grow_guard/data/sensor_repository.dart';
+import 'package:grow_guard/utils/colors.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'optimal_parameters.dart';
 
 class SensorData extends HookWidget {
@@ -21,7 +25,8 @@ class SensorData extends HookWidget {
   Future<double> fetchData() async {
     SensorRepository repository = SensorRepository();
     var data = await repository.getSensorData(deviceId, 1, type);
-    if (data != null) {
+    if (data != null && data.isNotEmpty) {
+      print(data[0].timestamp);
       return data[0].value!;
     }
 
@@ -35,6 +40,7 @@ class SensorData extends HookWidget {
     final snapshot = useFuture(future);
 
     final value = useState(0.0);
+    final loaded = useState(false);
     final size = MediaQuery.of(context).size;
     final Map<String, int> parameter;
     final String unit;
@@ -60,6 +66,10 @@ class SensorData extends HookWidget {
 
     if (snapshot.hasData) {
       value.value = snapshot.data!;
+      Timer(Duration(seconds: 1), () {
+        print("Yeah, this line is printed after 3 seconds");
+        loaded.value = true;
+      });
     }
 
     return Stack(
@@ -79,35 +89,40 @@ class SensorData extends HookWidget {
           ),
           width: size.width / 1.5,
           height: size.height / 7,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+          child: loaded.value
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: 70,
-                      child: Column(
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Icon(
-                            icon,
-                            size: 38,
+                          SizedBox(
+                            width: 70,
+                            child: Column(
+                              children: [
+                                Icon(
+                                  icon,
+                                  size: 38,
+                                ),
+                                const SizedBox(height: 5),
+                                Text(name,
+                                    style: const TextStyle(fontSize: 10)),
+                              ],
+                            ),
                           ),
-                          const SizedBox(height: 5),
-                          Text(name, style: const TextStyle(fontSize: 10)),
+                          const SizedBox(width: 20),
+                          Text(value.value.toString() + unit,
+                              style: const TextStyle(fontSize: 30)),
                         ],
                       ),
                     ),
-                    const SizedBox(width: 20),
-                    Text(value.value.toString() + unit,
-                        style: const TextStyle(fontSize: 30)),
                   ],
-                ),
-              ),
-            ],
-          ),
+                )
+              : Center(
+                  child: LoadingAnimationWidget.waveDots(
+                      color: darkBlack, size: 50)),
         ),
         // Circle on the right-hand side
         Positioned(

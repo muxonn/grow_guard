@@ -36,7 +36,7 @@ class PlantPage extends HookWidget {
     return Scaffold(
       backgroundColor: bgColor.value,
       appBar: AppBar(
-        toolbarHeight: 130,
+        toolbarHeight: 110,
         title: Text(
           "Dashboard",
           style: TextStyle(

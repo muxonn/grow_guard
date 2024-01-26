@@ -20,7 +20,7 @@ class InfoNavigator extends StatelessWidget {
         borderRadius: const BorderRadius.only(topRight: Radius.circular(40)),
         color: active ? Colors.white : forestGreen,
       ),
-      height: size.height / 9,
+      height: size.height / 10,
       width: size.width / 2,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

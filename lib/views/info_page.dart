@@ -30,7 +30,7 @@ class InfoPage extends HookWidget {
         const Align(
           alignment: Alignment.topCenter,
           child: Wrap(
-            runSpacing: 12,
+            runSpacing: 15,
             children: [
               SensorData(
                 type: SensorType.temperature,
@@ -38,14 +38,12 @@ class InfoPage extends HookWidget {
                 controlled: false,
                 deviceId: 1,
               ),
-              SizedBox(height: 10),
               SensorData(
                 type: SensorType.lighting,
                 icon: Icons.light_mode_rounded,
                 controlled: false,
                 deviceId: 1,
               ),
-              SizedBox(height: 10),
               SensorData(
                 type: SensorType.humidity,
                 icon: Icons.water_drop_rounded,

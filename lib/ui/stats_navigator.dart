@@ -19,7 +19,7 @@ class StatsNavigator extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(topLeft: Radius.circular(40)),
           color: active ? Colors.white : forestGreen),
-      height: size.height / 9,
+      height: size.height / 10,
       width: size.width / 2,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
